@@ -10,7 +10,11 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-        theme: ThemeData(primaryColor: Color(0xFFDBE9E8)), home: Main());
+        theme: ThemeData(
+            primaryColor: Color(0xFFDBE9E8),
+            canvasColor: Colors.white,
+            backgroundColor: Color(0xFF345C7D)),
+        home: Main());
   }
 }
 
@@ -23,7 +27,26 @@ class _MainState extends State<Main> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(),
+      appBar: AppBar(
+        elevation: 0,
+        leading: IconButton(icon: Icon(Icons.menu), onPressed: () {}),
+      ),
+      body: Container(color: Theme.of(context).primaryColor),
+      floatingActionButton: Container(
+        decoration: BoxDecoration(
+            shape: BoxShape.circle,
+            gradient: LinearGradient(
+                begin: Alignment.topCenter,
+                end: Alignment.bottomCenter,
+                colors: [Color(0xFFFE8978), Color(0xFFFF7582)])),
+        child: FloatingActionButton(
+          onPressed: () {
+            print("hello");
+          },
+          child: Icon(Icons.add),
+          backgroundColor: Colors.transparent,
+        ),
+      ),
     );
   }
 }
