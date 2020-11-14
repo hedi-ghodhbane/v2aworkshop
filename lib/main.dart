@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:v2workshop/screens/LandingScreen.dart';
+import 'package:flutter/services.dart';
+import 'package:v2workshop/screens/TabController.dart';
 import 'package:v2workshop/widgets/MyDrawer.dart';
 
 void main() {
@@ -11,7 +12,10 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    SystemChrome.setPreferredOrientations(
+        [DeviceOrientation.portraitUp, DeviceOrientation.portraitDown]);
     return MaterialApp(
+        debugShowCheckedModeBanner: false,
         theme: ThemeData(
             primaryColor: Color(0xFFDBE9E8),
             canvasColor: Colors.white,
