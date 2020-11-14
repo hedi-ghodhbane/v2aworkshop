@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:v2workshop/models/Todo.dart';
 import 'package:v2workshop/screens/CreateTask.dart';
+import 'package:v2workshop/screens/Profile.dart';
 import 'package:v2workshop/widgets/TodoCard.dart';
 
 class LandingScreen extends StatefulWidget {
@@ -100,7 +101,7 @@ class _LandingScreenState extends State<LandingScreen>
           children: [
             LandingPage(widget: widget, todos: _todos, tabC: _tabController),
             CreateTask(tabC: _tabController),
-            Text("hello")
+            Profile(tabC: _tabController),
           ],
         ),
       ),

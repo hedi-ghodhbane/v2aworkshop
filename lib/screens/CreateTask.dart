@@ -175,13 +175,17 @@ class _CreateTaskState extends State<CreateTask> {
                 Flexible(
                     child: Padding(
                   padding: const EdgeInsets.all(10.0),
-                  child: ListView.builder(
-                      itemExtent: 50,
+                  child: ListView.separated(
+                      separatorBuilder: (_, i) {
+                        return SizedBox(
+                          width: 10,
+                        );
+                      },
                       itemCount: 20,
                       scrollDirection: Axis.horizontal,
                       itemBuilder: (_, index) {
                         return CircleAvatar(
-                          radius: 20,
+                          radius: 32,
                           backgroundImage: AssetImage(
                               'assets/${contributores[index % contributores.length]}.jpg'),
                         );

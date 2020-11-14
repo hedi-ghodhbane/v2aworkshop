@@ -20,7 +20,9 @@ class MyApp extends StatelessWidget {
             primaryColor: Color(0xFFDBE9E8),
             canvasColor: Colors.white,
             textTheme: TextTheme(
-                bodyText1: TextStyle(fontSize: 25, color: Color(0xFF707070))),
+              bodyText1: TextStyle(fontSize: 25, color: Color(0xFF707070)),
+              bodyText2: TextStyle(fontSize: 20, color: Color(0xFF707070)),
+            ),
             backgroundColor: Color(0xFF345C7D)),
         home: Main());
   }
@@ -65,7 +67,7 @@ class _MainState extends State<Main> with TickerProviderStateMixin {
       builder: (_, child) {
         return Stack(children: [
           MyDrawer(drawerAnimation: drawerAnimation),
-          LandingScreen(animation: animation, controller: _controller),
+          LandingScreen(controller: _controller, animation: animation)
         ]);
       },
     );

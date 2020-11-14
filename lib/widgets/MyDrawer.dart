@@ -35,6 +35,12 @@ class MyDrawer extends StatelessWidget {
                     padding: EdgeInsets.all(3.0),
                     itemCount: 7,
                     itemBuilder: (_, index) {
+                      if (index == 0)
+                        return Text("Mnadhem",
+                            textAlign: TextAlign.center,
+                            style: TextStyle(
+                                color: Colors.white,
+                                decoration: TextDecoration.none));
                       if (index == 6)
                         return RaisedButton(
                             color: Color(0xFFFF7582),
