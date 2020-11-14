@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:v2workshop/screens/LandingScreen.dart';
+import 'package:v2workshop/widgets/MyDrawer.dart';
 
 void main() {
   runApp(MyApp());
@@ -13,6 +15,8 @@ class MyApp extends StatelessWidget {
         theme: ThemeData(
             primaryColor: Color(0xFFDBE9E8),
             canvasColor: Colors.white,
+            textTheme: TextTheme(
+                bodyText1: TextStyle(fontSize: 25, color: Color(0xFF707070))),
             backgroundColor: Color(0xFF345C7D)),
         home: Main());
   }
@@ -23,30 +27,43 @@ class Main extends StatefulWidget {
   _MainState createState() => _MainState();
 }
 
-class _MainState extends State<Main> {
+class _MainState extends State<Main> with TickerProviderStateMixin {
+  AnimationController _controller;
+  Animation animation;
+  Animation drawerAnimation;
+  @override
+  void initState() {
+    super.initState();
+    _controller = AnimationController(
+      duration: const Duration(milliseconds: 500),
+      vsync: this,
+    );
+    animation = Tween(begin: 0.0, end: 1.0).animate(CurvedAnimation(
+      parent: _controller,
+      curve: Curves.easeInOut,
+    ));
+    drawerAnimation = Tween(begin: -1.0, end: 0.0).animate(CurvedAnimation(
+      parent: _controller,
+      curve: Curves.easeInOut,
+    ));
+  }
+
+  @override
+  void dispose() {
+    _controller.dispose();
+    super.dispose();
+  }
+
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        elevation: 0,
-        leading: IconButton(icon: Icon(Icons.menu), onPressed: () {}),
-      ),
-      body: Container(color: Theme.of(context).primaryColor),
-      floatingActionButton: Container(
-        decoration: BoxDecoration(
-            shape: BoxShape.circle,
-            gradient: LinearGradient(
-                begin: Alignment.topCenter,
-                end: Alignment.bottomCenter,
-                colors: [Color(0xFFFE8978), Color(0xFFFF7582)])),
-        child: FloatingActionButton(
-          onPressed: () {
-            print("hello");
-          },
-          child: Icon(Icons.add),
-          backgroundColor: Colors.transparent,
-        ),
-      ),
+    return AnimatedBuilder(
+      animation: _controller,
+      builder: (_, child) {
+        return Stack(children: [
+          MyDrawer(drawerAnimation: drawerAnimation),
+          LandingScreen(animation: animation, controller: _controller),
+        ]);
+      },
     );
   }
 }
