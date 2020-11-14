@@ -33,7 +33,7 @@ class _LandingScreenState extends State<LandingScreen> {
         image: 'media.png',
         color: Color(0xFF345C7D)),
     Todo(
-        title: "Start the psychologie course in coursera",
+        title: "Start the psy in coursera",
         time: '10:00 AM - 12:30 AM',
         percentage: 20,
         image: 'psy.png',
@@ -78,7 +78,7 @@ class _LandingScreenState extends State<LandingScreen> {
         body: Container(
             color: Theme.of(context).primaryColor,
             child: ListView.builder(
-                itemCount: 15,
+                itemCount: 3,
                 itemBuilder: (_, i) {
                   return TodoCard(todo: _todos[i % _todos.length]);
                 })),

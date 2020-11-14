@@ -29,7 +29,7 @@ class _TodoCardState extends State<TodoCard> {
                 children: [
                   Text(widget.todo.title,
                       style:
-                          TextStyle(fontWeight: FontWeight.bold, fontSize: 20)),
+                          TextStyle(fontWeight: FontWeight.bold, fontSize: 18)),
                   Row(
                     mainAxisAlignment: MainAxisAlignment.start,
                     children: [
